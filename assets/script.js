@@ -3,10 +3,13 @@
 // - save button to save what you wrote to local storage 
 // - color coded time blocks for past, current, future
 
-var planner = document.querySelector(".container");
+
+//---------Begining of code with wrong results -----------//
+var planner = document.querySelectorAll(".container");
 var save = document.querySelectorAll(".save-btn");
-var task = document.getElementsByClassName(".input");
-var time = document.getElementsByClassName(".hour");
+var task = document.querySelectorAll(".input");
+var time = document.querySelectorAll(".hour");
+
 
 var today = moment();
 $("#currentDay").text(today.format("MMMM Do YYYY, h:mm a"));
@@ -14,41 +17,45 @@ $("#currentDay").text(today.format("MMMM Do YYYY, h:mm a"));
 // save.addEventListener("click", function(event)) {
 //     event.preventDefault(); }
 
-// use event target to figure out which input is being clicked on
+
+// This code will not function properly with what I want to do
 
 // Function to save to local storage using vanilla javascript and not table function
 function saveTask(event) {
     console.log(event.target.previousElementSibling.value);
     var savedItems = {
-        // hour: time,
+        // use event target to figure out which input is being clicked on
         task: event.target.previousElementSibling.value,
     };
-
     localStorage.setItem("hourlyTask", JSON.stringify(savedItems));
     console.log(savedItems);
+     if (task = "") {
+         document.task.innerHTML = savedItems;
+     } 
     getTask();
 }
 
 // Parsing JSON Hourly Task
-function getTask() {
+function getTask(event) {
     console.log("Getting tasks");
-    JSON.parse(localStorage.getItem("hourlyTask"))
+    JSON.parse(localStorage.getItem("hourlyTask"));
+    console.log(saveTask);
 }
 
 
 save.forEach(element => {
-    element.addEventListener("click", saveTask) 
+    element.addEventListener("click", saveTask)
+})
 
-});
-
-
-
+//-----------End of code with wrong result--------------//
 
 
+// Goal: Begin using jquery start below
+
+// var today = moment();
+// $("#currentDay").text(today.format("MMMM Do YYYY, h:mm a"));
 
 
-
-// Color coding hours
 
 
 
