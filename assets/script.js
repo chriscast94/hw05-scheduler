@@ -45,23 +45,33 @@ function getTask(event) {
 
 save.forEach(element => {
     element.addEventListener("click", saveTask)
-})
+});
 
 //-----------End of code with wrong result--------------//
 
 
 // Goal: Begin using jquery start below
 
+// Tells the time and date
+
 // var today = moment();
 // $("#currentDay").text(today.format("MMMM Do YYYY, h:mm a"));
 
+    // When the save button is clicked:
+
+$(document).ready(function () {
+
+// sets the texts into local Storage
+    $(".save-btn").on("click", function(){
+        var text = 
+    });
+    localStorage.setItem("task", text);
+});
 
 
 
 
 
-// When the save button is clicked:
-// saves the texts into local Storage
 // grabs the text from local storage and sets it into the text field
 
 

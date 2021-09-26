@@ -21,21 +21,25 @@ body {
     border-bottom: 10px solid black;
   }
   
+  /* input text class */
   .description {
     white-space: pre-wrap;
   }
   
+  /* area where the scheduler will be */
   .time-block {
     text-align: center;
     border-radius: 15px;
   }
   
+  /* the row's class name */
   .row {
     white-space: pre-wrap;
     height: 80px;
     border-top: 1px solid white;
   }
   
+  /* class where the time goes (8am, 10 pm, etc) */
   .hour {
     background-color: #ffffff;
     color: #000000;
@@ -57,6 +61,7 @@ body {
     color: white;
   }
   
+  /* class for save button */
   .saveBtn {
     border-left: 1px solid black;
     border-top-right-radius: 15px;
@@ -95,12 +100,3 @@ input {
 .time-block {
   margin: auto;
 }
-
-/* .container {
-  display: flex;
-  align-items: center;
-} */
-
-/* td .hour {
-
-} */
