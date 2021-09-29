@@ -21,7 +21,7 @@ $(document).ready(function () {
     });
 
     // Time tracking function
-    function trackTime() {
+    function colorTime() {
 
         var currentTime = moment().hour();
         $(".time-block").each(function(){
@@ -44,7 +44,7 @@ $(document).ready(function () {
         });
     }
     // Get items from local storage
-trackTime();
+colorTime();
 });
 
 
