@@ -13,30 +13,30 @@ $("#currentDay").text(today);
 $(document).ready(function () {
 
     // sets the texts into local Storage
-    function saveTask () {
+    function saveTask() {
         var text = $(this).siblings(".description").val();
         var time = $(this).parent().attr("id");
 
         localStorage.setItem(time, text);
     };
     $(".saveBtn").on("click", saveTask);
+    // $(".saveBtn").on("keypress", saveTask);
 
 });
 
-// Time tracking function
+//Function to color past/present/future time insert slots
 function colorTime() {
 
     var currentTime = moment().hours();
     $(".time-block").each(function () {
         var timeBlocks = parseInt($(this).attr("id"));
-        //  console.log(this);
+          console.log(this);
 
         if (timeBlocks === currentTime) {
             $(this).addClass("present");
             $(this).removeClass("past");
             $(this).removeClass("present")
             console.log(timeBlocks);
-
         }
 
         else if (timeBlocks < currentTime) {
