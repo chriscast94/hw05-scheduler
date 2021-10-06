@@ -3,16 +3,17 @@
 // - save button to save what you wrote to local storage 
 // - color coded time blocks for past, current, future
 
-// Goal: Begin using jquery start below
+// Tells the time and date Manupulate currentTime (change from military to?) or shorten calendar to someething that's not greater than 6 pm
+var currentTime = moment().hours();
+console.log(currentTime);
 
-// Tells the time and date
 var today = moment().format('MMMM Do YYYY, h:mm:ss a');
 $("#currentDay").text(today);
 
 // Ready to go when the page loads
 $(document).ready(function () {
 
-    // sets the texts into local Storage
+    // sets the texts into local Storage, with the name of the timeblock they were submitted in
     function saveTask() {
         var text = $(this).siblings(".description").val();
         var time = $(this).parent().attr("id");
@@ -27,26 +28,44 @@ $(document).ready(function () {
 //Function to color past/present/future time insert slots
 function colorTime() {
 
-    var currentTime = moment().hours();
     $(".time-block").each(function () {
         var timeBlocks = parseInt($(this).attr("id"));
-          console.log(this);
+        console.log(this);
+        // if (currentTime > 12) {
+        //     timeBlocks = timeBlocks + 12;
+  
+        // }
 
-        if (timeBlocks === currentTime) {
-            $(this).addClass("present");
-            $(this).removeClass("past");
-            $(this).removeClass("present")
-            console.log(timeBlocks);
+        // if (currentTime < 12) {
+        //     currentTime = currentTime - 12;
+        // }
+
+        if (timeBlocks < currentTime) {
+         
+            $(this).addClass("past");
+            $(this).removeClass("future");
+            $(this).removeClass("present");
+            console.log("(timeblocks < currentTime");
+            console.log("timeblock is ", timeBlocks);
+            console.log("currentTime is", currentTime);
         }
 
-        else if (timeBlocks < currentTime) {
-            $(this).removeClass("present");
+        else if (timeBlocks === currentTime) {
+            $(this).removeClass("past");
+            $(this).addClass("present");
             $(this).removeClass("future");
-            $(this).addClass("past");
+            console.log("(timeblocks === currentTime");
+            console.log("timeblock is ", timeBlocks);
+            console.log("currentTime is", currentTime);
         }
 
         else {
             $(this).addClass("future");
+            $(this).removeClass("present");
+            $(this).removeClass("past");
+            console.log("(timeblocks > currentTime");
+            console.log("timeblock is ", timeBlocks);
+            console.log("currentTime is", currentTime);
         }
     });
 }
@@ -56,15 +75,15 @@ $("#9am .description").val(localStorage.getItem("9am"));
 $("#10am .description").val(localStorage.getItem("10am"));
 $("#11am .description").val(localStorage.getItem("11am"));
 $("#12pm .description").val(localStorage.getItem("12pm"));
-$("#1pm .description").val(localStorage.getItem("1pm"));
-$("#2pm .description").val(localStorage.getItem("2pm"));
-$("#3pm .description").val(localStorage.getItem("3pm"));
-$("#4pm .description").val(localStorage.getItem("4pm"));
-$("#5pm .description").val(localStorage.getItem("5pm"));
-$("#6pm .description").val(localStorage.getItem("6pm"));
-$("#7pm .description").val(localStorage.getItem("7pm"));
-$("#8pm .description").val(localStorage.getItem("8pm"));
-$("#9pm .description").val(localStorage.getItem("9pm"));
+$("#13pm .description").val(localStorage.getItem("1pm"));
+$("#14pm .description").val(localStorage.getItem("2pm"));
+$("#15pm .description").val(localStorage.getItem("3pm"));
+$("#16pm .description").val(localStorage.getItem("4pm"));
+$("#17pm .description").val(localStorage.getItem("5pm"));
+$("#18pm .description").val(localStorage.getItem("6pm"));
+$("#19pm .description").val(localStorage.getItem("7pm"));
+$("#20pm .description").val(localStorage.getItem("8pm"));
+$("#21pm .description").val(localStorage.getItem("9pm"));
 
 colorTime();
 
